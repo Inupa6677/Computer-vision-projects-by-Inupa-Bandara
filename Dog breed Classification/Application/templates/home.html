@@ -2,37 +2,11 @@
 <html>
 <head>
     <title>Dog Breed Classification</title>
+    <link rel="stylesheet" type="text/css" href="home.css"> <!-- Link to external CSS file -->
 </head>
 <body>
-    <h1>Upload an Image of a Dog to Classify Its Breed</h1>
-    <form id="uploadForm" action="/predict" method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
-        <input type="submit" value="Predict">
-    </form>
-    <div id="result">
-        <h2>Prediction:</h2>
-        <p id="predictionText"></p>
-    </div>
-
-    <script>
-        document.getElementById('uploadForm').onsubmit = async function(event) {
-            event.preventDefault();  // Prevent the form from submitting normally
-            
-            const formData = new FormData(this);  // Collect form data
-            const response = await fetch('/predict', {
-                method: 'POST',
-                body: formData
-            });
-
-            // Check if the response is okay
-            if (response.ok) {
-                const result = await response.json();
-                document.getElementById('predictionText').textContent = result.prediction;
-            } else {
-                // Handle errors
-                document.getElementById('predictionText').textContent = 'Error making prediction. Please try again.';
-            }
-        };
-    </script>
+    <h1>Find your Dog Breed</h1>
+    
+    <script src="home.js"></script> <!-- Link to external JavaScript file -->
 </body>
 </html>
